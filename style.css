@@ -1,6 +1,11 @@
-#pixel-board{
-    margin-top: 50px;
-    display: flex;
-    flex-wrap: wrap;
-    width: 18%;
+.color {
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    height: 50px;
+    width: 50px;
+}
+
+#color-palette {
+    font-size: larger;
 }
