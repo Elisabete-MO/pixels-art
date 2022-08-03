@@ -1,9 +1,5 @@
 const cores = [];
 
-criarCores();
-criarBotoes();
-criarPixel();
-
 function criarCores() {
   const random = [];
   let cor;
@@ -34,12 +30,16 @@ function criarBotoes() {
 }
 
 function criarPixel() {
-let linha = document.querySelectorAll('.linha');
-  for(let i = 0; i < linha.length; i += 1) {
+  const linha = document.querySelectorAll('.linha');
+  for (let i = 0; i < linha.length; i += 1) {
     for (let coluna = 1; coluna <= 5; coluna += 1) {
-      let pixel = document.createElement('div');
+      const pixel = document.createElement('div');
       pixel.className = 'pixel';
       linha[i].appendChild(pixel);
     }
   }
 }
+
+criarCores();
+criarBotoes();
+criarPixel();
