@@ -1,4 +1,5 @@
 const cores = [];
+let cor = 'black';
 
 function criarCores() {
   const random = [];
@@ -34,22 +35,34 @@ function criarPixel() {
   const linha = document.querySelectorAll('.linha');
   for (let i = 0; i < linha.length; i += 1) {
     for (let coluna = 1; coluna <= 5; coluna += 1) {
-      const pixel = document.createElement('div');
+      let pixel = document.createElement('div');
       pixel.className = 'pixel';
+      pixel.id = i+''+coluna;
       linha[i].appendChild(pixel);
     }
   }
 }
 
-function selecaoCor(){
-var paleta = document.getElementById('color-palette');
-  paleta.addEventListener('click', function(button) {
-    let classe = button.target.classList;
-    if (classe[0] === 'color') {
-      let elemento = document.getElementsByClassName('selected');
+function selecaoCor() {
+  let paleta = document.getElementById('color-palette');
+  paleta.addEventListener('click', function (button) {
+    const elementoClasse = button.target.classList;
+    if (elementoClasse[0] === 'color') {
+      const elemento = document.getElementsByClassName('selected');
       elemento[0].classList.remove('selected');
-      classe.add('selected');
+      elementoClasse.add('selected');
+      const selecao = document.getElementsByClassName('selected');
+      cor = selecao[0].style.backgroundColor;
+      return cor;
     }
+  });
+}
+
+function pintar() {
+let linha = document.getElementById('pixel-board');
+linha.addEventListener('click', function(div){
+    let ponto = document.getElementById(div.target.id);
+    ponto.style.background = cor;
   });
 }
 
@@ -57,3 +70,4 @@ criarCores();
 criarBotoes();
 criarPixel();
 selecaoCor();
+pintar();
