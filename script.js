@@ -41,6 +41,19 @@ function criarPixel() {
   }
 }
 
+function selecaoCor(){
+var paleta = document.getElementById('color-palette');
+  paleta.addEventListener('click', function(button) {
+    let classe = button.target.classList;
+    if (classe[0] === 'color') {
+      let elemento = document.getElementsByClassName('selected');
+      elemento[0].classList.remove('selected');
+      classe.add('selected');
+    }
+  });
+}
+
 criarCores();
 criarBotoes();
 criarPixel();
+selecaoCor();
