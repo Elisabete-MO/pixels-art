@@ -16,15 +16,16 @@ function criarBotoes() {
   const escolhas = document.getElementById('color-palette');
   for (let i = 0; i < 4; i += 1) {
     const button = document.createElement('button');
+    button.classList = 'color';
     if (i === 0) {
       button.value = 'black';
       button.style.backgroundColor = 'black';
+      button.classList.add('selected');
     } else {
       button.value = cores[i];
       button.style.backgroundColor = cores[i];
     }
     button.type = 'button';
-    button.className = 'color';
     escolhas.appendChild(button);
   }
 }
