@@ -1,15 +1,16 @@
 const cores = [];
 let cor = 'black';
+let linha = 0;
 
 function criarCores() {
   const random = [];
-  let cor;
   for (let i = 0; i < 4; i += 1) {
     for (let j = 0; j < 3; j += 1) {
       random[j] = (Math.random() * 256);
     }
     cor = 'rgb(' + (random[0]) + ',' + (random[1]) + ',' + (random[2]) + ')';
     cores.push(cor);
+    cor = 'black';
   }
 }
 
@@ -32,19 +33,19 @@ function criarBotoes() {
 }
 
 function criarPixel() {
-  const linha = document.querySelectorAll('.linha');
+  linha = document.querySelectorAll('.linha');
   for (let i = 0; i < linha.length; i += 1) {
     for (let coluna = 1; coluna <= 5; coluna += 1) {
-      let pixel = document.createElement('div');
+      const pixel = document.createElement('div');
       pixel.className = 'pixel';
-      pixel.id = i+''+coluna;
+      pixel.id = i + '' + coluna;
       linha[i].appendChild(pixel);
     }
   }
 }
 
 function selecaoCor() {
-  let paleta = document.getElementById('color-palette');
+  const paleta = document.getElementById('color-palette');
   paleta.addEventListener('click', function (button) {
     const elementoClasse = button.target.classList;
     if (elementoClasse[0] === 'color') {
@@ -53,17 +54,44 @@ function selecaoCor() {
       elementoClasse.add('selected');
       const selecao = document.getElementsByClassName('selected');
       cor = selecao[0].style.backgroundColor;
+      const box = document.getElementById('box');
+      if (cor === 'black') {
+        box.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+      } else {
+        box.style.backgroundColor = cor.substring(0, cor.length - 1) +', 0.8)';
+      }
       return cor;
     }
   });
 }
 
 function pintar() {
-let linha = document.getElementById('pixel-board');
-linha.addEventListener('click', function(div){
-    let ponto = document.getElementById(div.target.id);
-    ponto.style.background = cor;
+  const linha = document.getElementById('box');
+  linha.addEventListener('click', function (div) {
+   const ponto = document.getElementById(div.target.id);
+    if (ponto !== null && ponto.className === 'pixel'){
+      ponto.style.background = cor;
+    }
   });
+}
+
+function limpar() {
+  const btnLimpar = document.getElementById('clear-board');
+  btnLimpar.addEventListener('click', function () {
+    for (let i = 0; i < linha.length; i += 1){
+      for (coluna = 1; coluna <=5; coluna +=1){
+        pixel = document.getElementById(i + '' + coluna);
+        pixel.style.backgroundColor = 'rgb(255, 255, 255)';
+      }
+    }
+    box.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    const elemento = document.getElementsByClassName('selected');
+    elemento[0].classList.remove('selected');
+    const btn = document.getElementsByClassName('color');
+    btn[0].classList.add('selected');
+    cor = 'black'  
+  });
+  return cor;
 }
 
 criarCores();
@@ -71,3 +99,4 @@ criarBotoes();
 criarPixel();
 selecaoCor();
 pintar();
+limpar();
