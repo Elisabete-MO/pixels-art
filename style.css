@@ -12,15 +12,15 @@
 #title {
   margin: 50px;
   font-size: 70px;
-  font-family: 'Finger Paint', cursive;
+  font-family: Finger Paint, cursive;
   color: white;
   text-align: center;
   text-decoration-line: underline;
   text-decoration-style: wavy;
-  text-shadow: 9px 9px 5px #ff0000, 0 9px 5px #0000ff;
+  text-shadow: 9px 9px 5px red, 0 9px 5px blue;
 }
 
-.color {
+button {
   border: 1px;
   border-color: black;
   border-style: solid;
@@ -29,8 +29,8 @@
 }
 
 .color:hover {
-  box-shadow: 0px 0px 20px white;
-  transform: translate(0px, 0px);
+  box-shadow: 0 0 20px white;
+  transform: translate(0, 0);
 }
 
 #color-palette {
@@ -86,22 +86,26 @@ h6 {
   display: inline-block;
   text-align: center;
   height: 40px;
-  padding: 10px; 
-  margin: 20px; 
+  padding: 10px;
+  margin: 20px;
   font-weight: bolder;
   color: white;
   background-color: black;
   transition: transform 0.5s;
+
   /* border-radius: 10px; */
+
   /* border-bottom: 5px solid rgb(1, 197, 197); */
 }
 
 .btn:hover {
   color: black;
   background-color: white;
-  box-shadow: 0px 0px 20px white;
-  transform: translate(0px, -5px);
+  box-shadow: 0 0 20px white;
+  transform: translate(0, -5px);
   transition: transform 0.5s;
+
   /* border-radius: 10px; */
+
   /* border-bottom: 5px solid rgb(1, 197, 197); */
 }
